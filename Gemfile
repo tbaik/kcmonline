@@ -6,9 +6,14 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'simple_form'
-gem 'sqlite3'
 gem 'devise'
 
+group :production do 
+	gem 'pg'
+end
+group :development, :test do 
+	gem 'sqlite3'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
