@@ -1,11 +1,9 @@
-
+<% if user_signed_in? %>
+ Show Data Table Here
+<% else %>
 	<h1>KCM STSM 2K13 Finances</h1>
-
 	<p>
-		<div class="hero-unit">
 		<%= render 'devise/sessions/new' %>
-		</div>
 	</p>
-	<p>
-		<%= link_to "Sign Up", "#" %>
-	</p>
+<% end %>
+
