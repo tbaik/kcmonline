@@ -1,0 +1,41 @@
+<h1>Listing finances</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Supporter name</th>
+    <th>Cash amount</th>
+    <th>Check amount</th>
+    <th>Check number</th>
+    <th>Notes</th>
+    <th>Data entry</th>
+    <th>Audit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @finances.each do |finance| %>
+  <tr>
+   <td><%= User.find(finance.user_id).fullname %></td>
+    <td><%= finance.user_id %></td>
+    <td><%= finance.date %></td>
+    <td><%= finance.supporter_name %></td>
+    <td><%= finance.cash_amount %></td>
+    <td><%= finance.check_amount %></td>
+    <td><%= finance.check_number %></td>
+    <td><%= finance.notes %></td>
+    <td><%= finance.data_entry %></td>
+    <td><%= finance.audit %></td>
+    <td><%= link_to 'Show', finance %></td>
+    <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
+    <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Finance', new_finance_path %>
