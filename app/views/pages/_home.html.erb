@@ -1,6 +1,4 @@
-<% if user_signed_in? %>
- Show Data Table Here
-<% else %>
+<% if !user_signed_in? %>
 	<h1>KCM STSM 2K13 Finances</h1>
 	<p>
 		<%= render 'devise/sessions/new' %>
