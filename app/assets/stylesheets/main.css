@@ -140,13 +140,36 @@ a
     width: 300px;
     margin: 0 auto;
     border-radius: 15px;
-    box-shadow: 0px 0px 25px 3px #000000;
+    box-shadow: 0px 0px 20px 3px #000000;
 }
 
 .checkbox
 {
     width: 0;
     margin: 0 auto;
+}
+
+.finance-page
+{
+    width: 60% !important;
+
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-radial-gradient(center, circle farthest-side, #FFFFFF 0%, #DBDBDB 100%);
+
+    /* Mozilla Firefox */ 
+    background-image: -moz-radial-gradient(center, circle farthest-side, #FFFFFF 0%, #DBDBDB 100%);
+
+    /* Opera */ 
+    background-image: -o-radial-gradient(center, circle farthest-side, #FFFFFF 0%, #DBDBDB 100%);
+
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(radial, center center, 0, center center, 487, color-stop(0, #FFFFFF), color-stop(1, #DBDBDB));
+
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-radial-gradient(center, circle farthest-side, #FFFFFF 0%, #DBDBDB 100%);
+
+    /* W3C Markup, IE10 Release Preview */ 
+    background-image: radial-gradient(circle farthest-side at center, #FFFFFF 0%, #DBDBDB 100%);
 }
 
 .edit-page

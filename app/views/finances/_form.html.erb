@@ -1,7 +1,6 @@
 <%= simple_form_for(@finance) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
     ID
     <br />
     <%= f.text_field :user_id %>
@@ -14,9 +13,6 @@
     <%= f.input :notes %>
     <%= f.input :data_entry %>
     <%= f.input :audit %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
