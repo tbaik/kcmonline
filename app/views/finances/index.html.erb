@@ -25,7 +25,6 @@
         <th></th>
     <% end %>
   </tr>
-
 <% @finances.each do |finance| %>
   <tr>
    <td><%= User.find(finance.user_id).fullname %></td>
