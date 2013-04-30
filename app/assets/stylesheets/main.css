@@ -121,9 +121,9 @@ a
 {
     background-image: url('/assets/classy_fabric.png');
     position: absolute;
-    top: 0;
+    top: 42;
     left: 0;
-    bottom: 0;
+    bottom: 2;
     right: 0;
     height: 100%;
     overflow: visible !important;
@@ -283,5 +283,5 @@ a
 
 .navbar
 {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }

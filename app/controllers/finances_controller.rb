@@ -4,11 +4,13 @@ class FinancesController < ApplicationController
   # GET /finances.json
   def index
     if user_signed_in?
-
       if current_admin_user
-        @finances = Finance.all 
+        @finances_grid = initialize_grid(Finance, 
+          :include => [:user])
       else
-        @finances = current_user.finances
+        @finances_grid = initialize_grid(Finance, 
+          :include => [:user],
+          :conditions => "user_id = #{current_user.id}" )
       end
       respond_to do |format|
         format.html # index.html.erb

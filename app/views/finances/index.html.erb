@@ -1,55 +1,64 @@
 <%= render "pages/home" %>
 
 <% if user_signed_in? %>
-<% if current_user.admin? %>
-    <h1>Listing Finances</h1>
-<% else %>
-    <h1><%= current_user.fullname %>'s Finances</h1>
-<% end %>
+<div class = "user-content">
 
-<table class = "table table-striped table-bordered">
-  <tr>
-    <th>Name</th>
-    <th>ID</th>
-    <th>Team</th>
-    <th>Date</th>
-    <th>Supporter name</th>
-    <th>Cash amount</th>
-    <th>Check amount</th>
-    <th>Check number</th>
     <% if current_user.admin? %>
-        <th>Notes</th>
-        <th>Data entry</th>
-        <th>Audit</th>
-        <th></th>
-        <th></th>
+      <h1>Listing Finances</h1>
+    <% else %>
+       <h1><%= current_user.fullname %>'s Finances</h1>
     <% end %>
-  </tr>
-<% @finances.each do |finance| %>
-  <tr>
-   <td><%= User.find(finance.user_id).fullname %></td>
-    <td><%= finance.user_id %></td>
-    <td><%= finance.user.team %></td>
-    <td><%= finance.date %></td>
-    <td><%= finance.supporter_name %></td>
-    <td><%= finance.cash_amount %></td>
-    <td><%= finance.check_amount %></td>
-    <td><%= finance.check_number %></td>
-    <% if current_user.admin? %>
-        <td><%= finance.notes %></td>
-        <td><%= finance.data_entry %></td>
-        <td><%= finance.audit %></td>
+  <%= grid(@finances_grid) do |f| 
+      
+    f.column name: 'Name', attribute: 'fullname', model: 'User' do |fin|
+      User.find(fin.user_id).fullname 
+    end
+    f.column name: 'ID', attribute: 'id', model: 'User' do |fin|
+      fin.user_id
+    end
+    f.column name: 'Team', attribute: 'team', model: 'User' do |fin|
+      fin.user.team
+    end
+    f.column name: 'Date', attribute: 'date', model: 'Finance' do |fin|
+      fin.date
+    end
+    f.column name: 'Supporter Name', attribute: 'supporter_name', model: 'Finance' do |fin|
+      fin.supporter_name
+    end
+    f.column name: 'Cash Amount', attribute: 'cash_amount', model: 'Finance' do |fin|
+      fin.cash_amount
+    end
+    f.column name: 'Check Amount', attribute: 'check_amount', model: 'Finance' do |fin|
+      fin.check_amount
+    end
+    if current_user.admin? 
+      f.column name: 'Notes', attribute: 'notes', model: 'Finance' do |fin|
+        fin.notes
+      end
+      f.column name: 'Data Entry', attribute: 'data_entry', model: 'Finance' do |fin|
+        fin.data_entry
+      end
+      f.column name: 'Audit', attribute: 'audit', model: 'Finance' do |fin|
+        fin.audit
+      end
+      f.column name: 'Edit' do |fin|
+        link_to 'Edit', edit_finance_path(fin)
+      end
+      f.column name: 'Destroy' do |fin|
+        link_to 'Destroy', fin, method: :delete, data: { confirm: 'Are you sure?' }
+      end
+    end
 
-        <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
-        <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
+    
+    #f.column do |eddes|
+    #    link_to 'Edit', edit_finance_path(eddes)
+    #    link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }
+    #end
+  end -%>
 
-<br />
-<% if current_user.admin? %>
-    <%= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
-<% end %>
-
+  <br />
+  <% if current_user.admin? %>
+      <%= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
 <% end %>

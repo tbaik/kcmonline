@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'simple_form'
 gem 'devise'
+gem "wice_grid", '3.2.1'
 
 group :production do 
 	gem 'pg'
@@ -29,6 +30,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery_datepicker'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
