@@ -7,10 +7,16 @@ class FinancesController < ApplicationController
       if current_admin_user
         @finances_grid = initialize_grid(Finance, 
           :include => [:user])
+        @total_cash = Finance.sum("cash_amount")
+        @total_check = Finance.sum("check_amount")
+        @total_amount = @total_cash + @total_check
       else
         @finances_grid = initialize_grid(Finance, 
           :include => [:user],
           :conditions => "user_id = #{current_user.id}" )
+        @total_cash = current_user.finances.sum("cash_amount")
+        @total_check = current_user.finances.sum("check_amount")
+        @total_amount = @total_cash + @total_check
       end
       respond_to do |format|
         format.html # index.html.erb

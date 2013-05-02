@@ -19,16 +19,16 @@
     f.column name: 'Team', attribute: 'team', model: 'User' do |fin|
       fin.user.team
     end
-    f.column name: 'Date', attribute: 'date', model: 'Finance' do |fin|
+    f.column name: 'Date', attribute: 'date', model: 'Finance', filter: false do |fin|
       fin.date
     end
-    f.column name: 'Supporter Name', attribute: 'supporter_name', model: 'Finance' do |fin|
+    f.column name: 'Supporter Name', attribute: 'supporter_name', model: 'Finance', filter: false do |fin|
       fin.supporter_name
     end
-    f.column name: 'Cash Amount', attribute: 'cash_amount', model: 'Finance' do |fin|
+    f.column name: 'Cash Amount', attribute: 'cash_amount', model: 'Finance', filter: false do |fin|
       fin.cash_amount
     end
-    f.column name: 'Check Amount', attribute: 'check_amount', model: 'Finance' do |fin|
+    f.column name: 'Check Amount', attribute: 'check_amount', model: 'Finance', filter: false do |fin|
       fin.check_amount
     end
     if current_user.admin? 
@@ -55,7 +55,17 @@
     #    link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }
     #end
   end -%>
-
+  <div class ="form-actions">
+    <p> <strong>Total Cash Amount:</strong> $
+    <%= @total_cash %>
+    </p>
+    <p><strong>Total Check Amount:</strong> $
+    <%= @total_check %>
+    </p>
+    <p><strong>Total Amount:</strong> $
+    <%= @total_amount %>
+    </p>
+  </div>
   <br />
   <% if current_user.admin? %>
       <%= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
