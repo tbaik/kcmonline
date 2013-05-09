@@ -10,6 +10,7 @@ class FinancesController < ApplicationController
         @total_cash = Finance.sum("cash_amount")
         @total_check = Finance.sum("check_amount")
         @total_amount = @total_cash + @total_check
+
       else
         @finances_grid = initialize_grid(Finance, 
           :include => [:user],

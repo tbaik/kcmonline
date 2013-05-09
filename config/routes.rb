@@ -4,6 +4,8 @@ KcmOnline::Application.routes.draw do
 
   devise_for :users
 
+  get 'teamtotals' => 'pages#teamtotals'
+
   root :to => 'finances#index'
 
   # The priority is based upon order of creation:
