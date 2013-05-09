@@ -53,6 +53,19 @@
 
     
   end -%>
+  <% if !current_user.admin? %>
+    <div class ="form-actions">
+      <p> <strong>Total Cash Amount:</strong> $
+      <%= @total_cash %>
+      </p>
+      <p><strong>Total Check Amount:</strong> $
+      <%= @total_check %>
+      </p>
+      <p><strong>Total Amount:</strong> $
+      <%= @total_amount %>
+      </p>
+    </div>
+  <% end %>
   <br />
 </div>
 <% end %>
