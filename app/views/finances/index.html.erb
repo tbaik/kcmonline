@@ -5,6 +5,8 @@
 
     <% if current_user.admin? %>
       <h1>Listing Finances</h1>
+      <%= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
+      <br><br/>
     <% else %>
        <h1><%= current_user.fullname %>'s Finances</h1>
     <% end %>
