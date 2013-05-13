@@ -68,7 +68,7 @@ KcmOnline::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['app14182010@heroku.com'],
     :password       => ENV['zjmeksgg'],
-    :domain         => ENV['heroku.com']
+    :domain         => ENV['kcmfinance.herokuapp.com']
   } 
 
   #config.action_mailer.default_url_options = { :host => 'kcmonline.org' }
