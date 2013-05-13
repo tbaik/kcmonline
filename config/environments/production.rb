@@ -69,7 +69,6 @@ KcmOnline::Application.configure do
     :user_name      => ENV['app14182010@heroku.com'],
     :password       => ENV['zjmeksgg'],
     :domain         => ENV['heroku.com']
-    :enable_starttls_auto => true
   } 
 
   #config.action_mailer.default_url_options = { :host => 'kcmonline.org' }
