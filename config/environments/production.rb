@@ -62,14 +62,15 @@ KcmOnline::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = { :host => 'kcmfinance.herokuapp.com' }
-ActionMailer::Base.smtp_settings = {
-  :address        => "smtp.sendgrid.net",
-  :port           => "25",
-  :authentication => :plain,
-  :user_name      => ENV['app14182010@heroku.com'],
-  :password       => ENV['zjmeksgg'],
-  :domain         => ENV['heroku.com']
-}
+  ActionMailer::Base.smtp_settings = {
+    :address        => "smtp.sendgrid.net",
+    :port           => "587",
+    :authentication => :plain,
+    :user_name      => ENV['app14182010@heroku.com'],
+    :password       => ENV['zjmeksgg'],
+    :domain         => ENV['heroku.com']
+    :enable_starttls_auto => true
+  } 
 
   #config.action_mailer.default_url_options = { :host => 'kcmonline.org' }
 
