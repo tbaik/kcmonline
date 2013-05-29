@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
   end
+
   def teamtotals
   	 if user_signed_in?
       if current_admin_user
