@@ -10,6 +10,9 @@ class FinancesController < ApplicationController
           :include => [:user],
           :enable_export_to_csv => true,
           :csv_file_name => 'KCMSTSM2K13FINANCES')
+
+        export_grid_if_requested('g1' => 'finances_grid') do 
+        end
       else
         @finances_grid = initialize_grid(Finance, 
           :include => [:user],
@@ -23,9 +26,8 @@ class FinancesController < ApplicationController
       format.json { render json: @finances }
       end
     end
-    
-    export_grid_if_requested('g1' => 'finances_grid') do 
-    end
+
+
   end
 
   # GET /finances/1

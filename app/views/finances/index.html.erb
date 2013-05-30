@@ -27,7 +27,9 @@
       <%= @total_amount %>
       </p>
     </div>
-    <button class =  "btn btn-primary wg-external-csv-export-button{'data-grid-name' => 'g1'}"> Export To CSV </button>
+    <% if current_user.admin? %>
+      <button class =  "btn btn-primary wg-external-csv-export-button{'data-grid-name' => 'g1'}"> Export To CSV </button>
+    <% end %>
   <% # end %>
   <br />
 </div>
