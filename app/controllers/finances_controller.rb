@@ -6,15 +6,10 @@ class FinancesController < ApplicationController
     if user_signed_in?
       if current_admin_user
         @finances_grid = initialize_grid(Finance, 
+          :name => 'g1',
           :include => [:user],
           :enable_export_to_csv => true,
           :csv_file_name => 'KCMSTSM2K13FINANCES')
-        export_grid_if_requested('g1' => 'finances_grid') do 
-          respond_to do |format|
-          format.html # index.html.erb
-          format.json { render json: @finances }
-          end
-        end
       else
         @finances_grid = initialize_grid(Finance, 
           :include => [:user],
@@ -22,12 +17,14 @@ class FinancesController < ApplicationController
         @total_cash = current_user.finances.sum("cash_amount")
         @total_check = current_user.finances.sum("check_amount")
         @total_amount = @total_cash + @total_check
-
-        respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @finances }
-        end
       end
+      respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @finances }
+      end
+    end
+    
+    export_grid_if_requested('g1' => 'finances_grid') do 
     end
   end
 
