@@ -22,6 +22,16 @@ class PagesController < ApplicationController
         @china_total_cash = 0
         @china_total_check = 0
         
+        @leader_total_cash = 0
+        @leader_total_check = 0
+
+        #This will only work if team leaders are numbers 7 through 16.
+        for i in 7..16
+          @leader_total_cash += User.find(i).finances.sum("cash_amount")
+          @leader_total_check += User.find(i).finances.sum("check_amount")
+        end
+        @leader_total_amount = @leader_total_cash + @leader_total_check
+
         User.all.each do |user|
           if user.team == "india" 
             @india_total_cash += user.finances.sum("cash_amount")
