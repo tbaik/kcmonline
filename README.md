@@ -1,4 +1,6 @@
-kcmonline.org Finances Web Application
+kcmfinance.herokuapp.com Finances Web Application
+
+kcmonline.org for more information on the KCM Organization
 
 Author: Tony Baik
 
